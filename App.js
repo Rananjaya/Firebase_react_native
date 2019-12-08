@@ -57,6 +57,19 @@ export default class App extends React.Component{
          console.log(error.toString())
       }
   }
+  LogUser = () =>{
+    let email = this.state.email
+    let password = this.state.password
+      try{
+            firebase.auth().signInWithEmailAndPassword(email,password)
+            .then(function(user){
+                  console.log(user)
+            })
+      }
+      catch(error){
+          console.log(error.toString())
+      }
+  }
 
  
   
@@ -92,12 +105,12 @@ export default class App extends React.Component{
 
         </Item>
 
-        <Button onPress={this.singupUser} style={{marginTop:10}} full rounded success>
+        <Button onPress={this.LogUser} style={{marginTop:10}} full rounded success>
             <Text style={{color:'white'}}>Login</Text>
         </Button>
 
 
-        <Button style={{marginTop:10}} full rounded primary>
+        <Button onPress={this.singupUser} style={{marginTop:10}} full rounded primary>
 
           <Text style={{color:'white'}}>Sign up</Text>
 
